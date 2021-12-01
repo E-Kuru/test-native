@@ -50,7 +50,7 @@ export default function App() {
 
       </View>
 
-        <ActivityIndicator style={styles.activity} color='#ffff' size='large'/>
+        <ActivityIndicator style={styles.activity} color='red' size='large'/>
       
         <FlatList style={styles.allList} data={characters} renderItem={Character} />
       
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     borderWidth : 3
   },
   activity : {
-    marginTop : 15,
+    marginTop : 40,
     marginBottom : 40,
   },
   allList : {
