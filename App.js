@@ -22,39 +22,46 @@ export default function App() {
   }
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.container2}>
-          <Text style={styles.allText}>
-            Hey
-          </Text>
-          <Text style={styles.allText}>
-            Hola
-          </Text>
-          <Text style={styles.allText}>
-            Hello
-          </Text>
-          <Image
-            style={styles.images}
-            source={{uri: 'https://www.konexio.eu/uploads/1/2/0/2/120245745/konexio-logo_1.png',}}
-          />   
-          <Image
-            style={styles.images}
-            source={require('./konexio.png')}      
-            />    
+    <View>
+      <ScrollView style={styles.container}>
+        
+        <View style={styles.container2}>
+            
+            <Text style={styles.allText}>
+              Hey
+            </Text>
+            <Text style={styles.allText}>
+              Hola
+            </Text>
+            <Text style={styles.allText}>
+              Hello
+            </Text>
+            <Image
+              style={styles.images}
+              source={{uri: 'https://www.konexio.eu/uploads/1/2/0/2/120245745/konexio-logo_1.png',}}
+            />   
+            <Image
+              style={styles.images}
+              source={require('./konexio.png')}      
+              />    
 
-          <Pressable style={styles.pressable} onPress={handlePress}>
-              <Text style={styles.allText}>
-                Press it !
-              </Text>
-          </Pressable>
+            <Pressable style={styles.pressable} onPress={handlePress}>
+                <Text style={styles.allText}>
+                  Press it !
+                </Text>
+            </Pressable>
 
-      </View>
+        </View>
 
         <ActivityIndicator style={styles.activity} color='white' size='large'/>
       
-        <FlatList style={styles.allList} data={characters} renderItem={Character} />
-      
-    </ScrollView>
+        
+      <FlatList horizontal style={styles.allList} data={characters} renderItem={Character} />
+
+      </ScrollView>
+
+
+    </View>
   );
 }
 
@@ -75,26 +82,24 @@ const Character = ({ item }) => {
 const styles = StyleSheet.create({
   container : {
     backgroundColor : 'blue',
-    height : 200,
     padding : 15,
     marginTop : 50,
   },
   container2 : {
     backgroundColor : 'white',
   },
-  allText : {
-    marginTop : 80,
-    marginBottom : 80,
-    fontSize : 30,
-    color : 'black',
-    textAlign : 'center',
-    fontWeight : 'bold',
-  },
   images : {
     marginLeft : 85,
     marginTop : 45,
     height : 50,
     width : 200
+  },
+  allText : {
+    marginTop : 80,
+    marginBottom : 80,
+    fontSize : 30,
+    textAlign : 'center',
+    fontWeight : 'bold',
   },
   pressable : {
     height : 40,
@@ -114,19 +119,31 @@ const styles = StyleSheet.create({
     marginBottom : 40,
   },
   allList : {
+    height : 400,
+    overflow : 'scroll',
+    display : 'flex',
     backgroundColor : 'white',
     marginBottom : 40,
+    borderStyle : 'solid',
+    borderColor : 'black',
+    borderWidth : 3
   },
   imageContainer : {
     display : 'flex',
     justifyContent : 'space-around',
     alignItems : 'center',
     height : 300,
+    width : 200,
     marginTop : 10,
+    marginRight : 45,
+    marginLeft : 25,
+    borderStyle : 'solid',
+    borderColor : 'black',
+    borderWidth : 3
   },
   listImage : {
-    width : 200,
-    height : 200,
+    width : 190,
+    height : 240,
   },
   listText : {
     fontWeight : 'bold',
