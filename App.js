@@ -50,7 +50,7 @@ export default function App() {
 
       </View>
 
-        <ActivityIndicator style={styles.activity} color='red' size='large'/>
+        <ActivityIndicator style={styles.activity} color='white' size='large'/>
       
         <FlatList style={styles.allList} data={characters} renderItem={Character} />
       
