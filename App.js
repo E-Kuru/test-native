@@ -1,14 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View , Image,Pressable, ActivityIndicator,FlatList} from 'react-native';
+import { StyleSheet, Text, View , Image,Pressable, ActivityIndicator, FlatList, Modal} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
 import { useEffect, useState } from 'react';
-import { flushSync } from 'react-dom';
 
 export default function App() {
 
   const [characters, setCharacters] = useState ([])
-
+  
   useEffect( () => {
     fetch('https://thronesapi.com/api/v2/Characters')
     .then(res => res.json())
@@ -66,8 +65,19 @@ export default function App() {
 }
 
 const Character = ({ item }) => {
+
+  var momo = false;
+
+  const handleSwitchModal =  () => {
+    // momo = !momo
+    alert(`
+    FullName : ${item.fullName}
+    Family : ${item.family}
+    Title : ${item.title}`)
+  }
+
   return (
-    <View style={styles.imageContainer}>
+    <Pressable style={styles.imageContainer} onLongPress={() => handleSwitchModal()} >
       <Text style={styles.listText}>{item.fullName}</Text>
       <Image
         style={styles.listImage}
@@ -75,7 +85,20 @@ const Character = ({ item }) => {
           uri: item.imageUrl
         }}
       />
-    </View>
+      <Modal visible={momo} style={styles.modal}>
+        <View>
+          <Text style={styles.modalText}>
+            {item.fullName}
+          </Text>
+          <Text style={styles.modalText}>
+            {item.family}
+          </Text>
+          <Text style={styles.modalText}>
+            {item.title}
+          </Text>
+        </View>
+      </Modal>
+    </Pressable>
   )
 }
 
@@ -147,6 +170,14 @@ const styles = StyleSheet.create({
   },
   listText : {
     fontWeight : 'bold',
+    fontSize : 20
+  },
+  modal : {
+    zIndex : 2,
+    height : 120,
+    width : 120
+  },
+  modalText : {
     fontSize : 20
   }
 });
